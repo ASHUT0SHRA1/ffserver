@@ -258,7 +258,7 @@ const acceptFriendRequest = async(req ,res)=>{
 const userFriends = async(req, res)=>{
     try {
         const userid = req.params.userid ; 
-        const user= await usermodel.findById(userid).populate('friends' , "name email");
+        const user= await usermodel.findById(userid).populate('friends' , "name email image");
         console.log(user);
         const userfriends = user.friends;
         res.status(200).send({
