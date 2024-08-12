@@ -82,7 +82,8 @@ const loginController = async (req, res) => {
 
 const updateUserController = async (req, res) => {
     try {
-        const { name, password, email } = req.body;
+        // const { name, password, email } = req.body;
+        const { name, password, email , image } = req.body;
         const user = await usermodel.findOne({ email });
 
         //password validatet
@@ -97,6 +98,7 @@ const updateUserController = async (req, res) => {
             {
                 name: name || user.name,
                 password: hashedPassword || user.password,
+                image : image 
             }, { new: true }
         )
         res.status(200).send({
