@@ -183,9 +183,9 @@ const getfriendRequest = async(req ,res) => {
     try {
         const userId  = req.params.userid;
         //fetch the user document based on the User id
-        const user = await usermodel.findById(userId).populate('friendRequest' ,"name email").lean();
+        const user = await usermodel.findById(userId).populate('friendRequest' ,"name email image").lean();
         const getfriendrequest = user.friendRequest; 
-        const user1 = await usermodel.findById(userId).populate('sentFriendRequest' ,"name email").lean();
+        const user1 = await usermodel.findById(userId).populate('sentFriendRequest' ,"name email image").lean();
 
         const sentfriendrequest = user1.sentFriendRequest ; 
         res.status(200).send({
